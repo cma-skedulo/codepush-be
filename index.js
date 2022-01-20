@@ -9,12 +9,13 @@ var router = new Router();
 const PORT = process.env.PORT || 3000;
 
 var filePath
+var fileName
 var fileType
 
 router.get('/', (ctx, next) => {
   // ctx.router available  try {
     if (filePath && fs.existsSync(filePath)) {
-        ctx.response.attachment(filePath);
+        ctx.response.attachment(filename);
         ctx.response.body = fs.createReadStream(filePath);
         ctx.response.type = fileType
       } else {
@@ -25,6 +26,7 @@ router.get('/', (ctx, next) => {
 router.post('/',koaBody({multipart: true}), (ctx, next) => {
     const file = ctx.request.files?.['upload'];
     filePath = file.path
+    fileName = file.name
     fileType = file.type
     ctx.body = 'Success';
 });
