@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
