@@ -15,7 +15,7 @@ var fileType
 router.get('/', (ctx, next) => {
   // ctx.router available  try {
     if (filePath && fs.existsSync(filePath)) {
-        ctx.response.attachment(filename);
+        ctx.response.attachment(fileName);
         ctx.response.body = fs.createReadStream(filePath);
         ctx.response.type = fileType
       } else {
