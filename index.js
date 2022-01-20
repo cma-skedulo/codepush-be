@@ -1,3 +1,4 @@
+var fs = require('fs');
 var Koa = require('koa');
 var Router = require('koa-router');
 var koaBody = require('koa-body');
@@ -12,7 +13,7 @@ var fileType
 
 router.get('/', (ctx, next) => {
   // ctx.router available  try {
-    if (fs.existsSync(filePath)) {
+    if (filePath && fs.existsSync(filePath)) {
         ctx.response.attachment(filePath);
         ctx.response.body = fs.createReadStream(filePath);
         ctx.response.type = fileType
