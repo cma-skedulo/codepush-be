@@ -6,7 +6,7 @@ var koaBody = require('koa-body');
 var app = new Koa();
 var router = new Router();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 var filePath
 var fileType
@@ -22,11 +22,11 @@ router.get('/', (ctx, next) => {
       }
 });
 
-
 router.post('/',koaBody({multipart: true}), (ctx, next) => {
     const file = ctx.request.files?.['upload'];
     filePath = file.path
     fileType = file.type
+    ctx.body = 'Success';
 });
 
 app
